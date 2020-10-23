@@ -1,10 +1,12 @@
-from secret import (
-    username,
-    password,
-)  # This is where the username and password info are stored.
-from selenium import webdriver
 import datetime
 import time
+
+from selenium import webdriver
+
+from secret import (  # This is where the username and password info are stored.
+    password,
+    username,
+)
 
 # Need to download the browser driver online @ https://sites.google.com/a/chromium.org/chromedriver/downloads
 exe_path = "C:\Program Files (x86)\chromedriver.exe"
@@ -24,7 +26,6 @@ options.add_experimental_option("prefs", prefs)
 # applies the above changes to the webdriver
 driver = webdriver.Chrome(exe_path, options=options)
 
-# url = "https://accounts.teraportal.com/"
 url = "https://gdchillers.teraportal.com/tadmin/minister/prepaids/advanced-search"
 print(url)
 driver.get(url)
@@ -37,14 +38,9 @@ password.clear()
 user.send_keys(uid)
 password.send_keys(pwd)
 time.sleep(3)
-driver.find_element_by_name(
-    "submit"
-).click()  # This may or may not work because it seems like the id isn't shown for sign in but it does show the type, name and value and two of those are "submit" and the other is "Login"
+driver.find_element_by_name("submit").click()
 time.sleep(15)
-# After signing in go to this page: https://gdchillers.teraportal.com/tadmin/minister/prepaids/advanced-search
 print("... We're in.")
-# csv_url = "https://gdchillers.teraportal.com/tadmin/minister/prepaids/advanced-search"
-# driver.get(csv_url)
 time.sleep(15)
 driver.find_element_by_id("btn-download").click()
 time.sleep(20)
