@@ -1,25 +1,10 @@
-"""
-I am having an issue where I am getting 'incorrect credentials'
-when trying to log in but the credentials are correct.
---------------------------------------------------------------------
-I am thinking of skipping the first URL and just using the second one 
-because it seems to be working there.
-
-"""
-
-
 from secret import (
     username,
     password,
 )  # This is where the username and password info are stored.
 from selenium import webdriver
-import os, glob
 import datetime
 import time
-from shutil import move
-import pandas as pd
-import openpyxl
-from openpyxl import load_workbook
 
 # Need to download the browser driver online @ https://sites.google.com/a/chromium.org/chromedriver/downloads
 exe_path = "C:\Program Files (x86)\chromedriver.exe"
@@ -45,8 +30,6 @@ print(url)
 driver.get(url)
 uid = username
 pwd = password
-print(uid)
-print(pwd)
 user = driver.find_element_by_id("login_mail")
 password = driver.find_element_by_id("login_pass")
 user.clear()
@@ -62,7 +45,6 @@ time.sleep(15)
 print("... We're in.")
 # csv_url = "https://gdchillers.teraportal.com/tadmin/minister/prepaids/advanced-search"
 # driver.get(csv_url)
-print("Made it to the CSV website")
 time.sleep(15)
 driver.find_element_by_id("btn-download").click()
 time.sleep(20)
